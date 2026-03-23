@@ -1,3 +1,4 @@
+# Clase participante
 class Participante:
     def __init__(self, nombre, edad, email):
         self.nombre = nombre
@@ -8,6 +9,7 @@ class Participante:
         return self.edad >= 18
 
 
+# Clase Taller
 class Taller:
     def __init__(self, nombre, limite_asistentes):
         self.nombre = nombre
@@ -23,6 +25,7 @@ class Taller:
             return True
         return False
 
+# Clase SistemaReservas
 class SistemaReservas:
     def __init__(self):
         self.talleres = []
@@ -37,3 +40,17 @@ class SistemaReservas:
 
     def listar_participantes_taller(self, taller):
         return [p.nombre for p in taller.lista_inscritos]
+    
+
+# Clase Profesor
+class Profesor:
+    def __init__(self, nombre, especialidad):
+        self.nombre = nombre
+        self.especialidad = especialidad
+        self.talleres = []
+
+    def asignar_taller(self, taller):
+        if taller not in self.talleres:
+            self.talleres.append(taller)
+            return True
+        return False
