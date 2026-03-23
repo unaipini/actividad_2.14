@@ -23,14 +23,14 @@ jobs:
           pip install pytest
           pytest -v tests
 
-deploy:
-  needs: build-and-test
-  if: github.ref == 'refs/heads/main' # Solo deploy desde main
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-    - name: Despliegue simulado
-      run: |
-        echo "Despliegue sencillo: copiando archivos a carpeta local /tmp/deploy"
-        mkdir -p /tmp/deploy
-        cp -r src/* /tmp/deploy/
+  deploy:
+    needs: build-and-test
+    if: github.ref == 'refs/heads/main' # Solo deploy desde main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Despliegue simulado
+        run: |
+          echo "Despliegue sencillo: copiando archivos a carpeta local /tmp/deploy"
+          mkdir -p /tmp/deploy
+          cp -r src/* /tmp/deploy/
